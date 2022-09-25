@@ -102,7 +102,7 @@ variable "ldap_from_dns" {
 }
 
 variable "ldap_groups" {
-  default = []
+  default     = []
   description = <<-EOT
     List of LDAP Groups.
     * domain: (default is base_settings.domain) - LDAP server domain the Group resides in.
@@ -112,27 +112,27 @@ variable "ldap_groups" {
       2. readonly: (default)
       3. user
   EOT
-  type        =  list(object(
-        {
-          domain = optional(string)
-          name = string
-          role = optional(string, "readonly")
-        }
-      ))
+  type = list(object(
+    {
+      domain = optional(string)
+      name   = string
+      role   = optional(string, "readonly")
+    }
+  ))
 }
 variable "ldap_servers" {
-  default = []
+  default     = []
   description = <<-EOT
     List of LDAP Servers.
     * port: (default is 389) - Port to Assign to the LDAP Server.  Range is 1-65535.
     * server - DNS Name or IP address of an LDAP Server.
   EOT
-  type        =  list(object(
-        {
-          port = optional(number, 389)
-          server = string
-        }
-      ))
+  type = list(object(
+    {
+      port   = optional(number, 389)
+      server = string
+    }
+  ))
 }
 
 variable "name" {

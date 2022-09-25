@@ -10,7 +10,7 @@ data "intersight_organization_organization" "org_moid" {
       regexall("[[:xdigit:]]{24}", var.organization)
     ) == 0
   }
-  name     = each.value
+  name = each.value
 }
 
 #____________________________________________________________
@@ -115,8 +115,8 @@ locals {
 
 data "intersight_iam_end_point_role" "roles" {
   for_each = { for v in local.roles : v => v }
-  name = each.value
-  type = "IMC"
+  name     = each.value
+  type     = "IMC"
 }
 
 resource "intersight_iam_ldap_group" "ldap_group" {
@@ -125,8 +125,8 @@ resource "intersight_iam_ldap_group" "ldap_group" {
     intersight_iam_ldap_policy.ldap
   ]
   for_each = { for v in var.ldap_groups : v.name => v }
-  domain = length(compact([each.value.domain])) > 0 ? each.value.domain : var.base_settings.domain
-  name   = each.value.name
+  domain   = length(compact([each.value.domain])) > 0 ? each.value.domain : var.base_settings.domain
+  name     = each.value.name
   end_point_role {
     moid        = data.intersight_iam_end_point_role.roles[each.value.role].results[0].moid
     object_type = "iam.EndPointRole"
