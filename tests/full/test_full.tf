@@ -21,19 +21,14 @@ variable "intersight_endpoint" {
 }
 variable "name" {}
 
+output "ldap_group" {
+  value = module.main.ldap_policy.ldap_groups["server_admins"]
+}
 output "ldap_policy" {
-  value = {
-    ldap_groups = {
-      for v in sort(keys(module.main.ldap_policy.ldap_groups)
-      ) : v => module.main.ldap_policy.ldap_groups[v]
-    }
-    ldap_providers = {
-      for v in sort(keys(module.main.ldap_policy.ldap_providers)
-      ) : v => module.main.ldap_policy.ldap_providers[v]
-    }
-    moid = module.main.moid
-    name = var.name
-  }
+  value = module.main.moid
+}
+output "ldap_provider" {
+  value = module.main.ldap_policy.ldap_providers["198.18.3.89"]
 }
 
 # This is the module under test

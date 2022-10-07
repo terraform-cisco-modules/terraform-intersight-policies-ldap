@@ -38,9 +38,9 @@ func TestFull(t *testing.T) {
 	//========================================================================
 	defer terraform.Destroy(t, terraformOptions) // defer to ensure that TF destroy happens automatically after tests are completed
 	terraform.InitAndApply(t, terraformOptions)
-	ldap_group_moid := terraform.Output(t, terraformOptions, "ldap_policy[ldap_groups][server_admins]")
-	ldap_policy_moid := terraform.Output(t, terraformOptions, "ldap_policy[moid]")
-	ldap_provider_moid := terraform.Output(t, terraformOptions, "ldap_policy[ldap_providers][198.18.3.89]")
+	ldap_group_moid := terraform.Output(t, terraformOptions, "ldap_group")
+	ldap_policy_moid := terraform.Output(t, terraformOptions, "ldap_policy")
+	ldap_provider_moid := terraform.Output(t, terraformOptions, "ldap_provider")
 
 	assert.NotEmpty(t, ldap_group_moid, "TF group moid output should not be empty")
 	assert.NotEmpty(t, ldap_policy_moid, "TF policy moid output should not be empty")
