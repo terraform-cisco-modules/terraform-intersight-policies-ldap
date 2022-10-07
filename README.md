@@ -143,7 +143,6 @@ $env:TF_VAR_secretkey="<secret-key-file-location>"
 | Name | Description |
 |------|-------------|
 | <a name="output_moid"></a> [moid](#output\_moid) | LDAP Policy Managed Object ID (moid). |
-| <a name="output_ldap_policy"></a> [ldap\_policy](#output\_ldap\_policy) | n/a |
 ## Resources
 
 | Name | Type |
