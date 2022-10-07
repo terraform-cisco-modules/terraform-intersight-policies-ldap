@@ -92,9 +92,9 @@ func TestFull(t *testing.T) {
 	"Providers": [
         {
           "ClassId": "mo.MoRef",
-          "Moid": "{{ .ldap_provider_moid }}",
+          "Moid": "{{ .ldap_provider }}",
           "ObjectType": "iam.LdapProvider",
-          "link": "https://www.intersight.com/api/v1/iam/LdapProviders/{{ .ldap_provider_moid }}"
+          "link": "https://www.intersight.com/api/v1/iam/LdapProviders/{{ .ldap_provider }}"
         }
       ],
       "UserSearchPrecedence": "LocalUserDb"
@@ -113,9 +113,9 @@ func TestFull(t *testing.T) {
 	"Domain": "example.com",
 	"LdapPolicy": {
         "ClassId": "mo.MoRef",
-        "Moid": "{{ .ldap_policy_moid }}",
+        "Moid": "{{ .ldap_policy }}",
         "ObjectType": "iam.LdapPolicy",
-        "link": "https://www.intersight.com/api/v1/iam/LdapPolicies/{{ .ldap_policy_moid }}"
+        "link": "https://www.intersight.com/api/v1/iam/LdapPolicies/{{ .ldap_policy }}"
 	},
 	"Name": "server_admins"
 }
