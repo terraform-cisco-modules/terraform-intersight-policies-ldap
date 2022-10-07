@@ -21,7 +21,7 @@ module "ldap" {
       role = "user"
     }
   ]
-  ldap_servers = [{
+  ldap_providers = [{
     server = "198.18.3.89"
   }]
   name         = "default"

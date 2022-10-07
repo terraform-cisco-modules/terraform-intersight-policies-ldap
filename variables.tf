@@ -120,7 +120,7 @@ variable "ldap_groups" {
     }
   ))
 }
-variable "ldap_servers" {
+variable "ldap_providers" {
   default     = []
   description = <<-EOT
     List of LDAP Servers.

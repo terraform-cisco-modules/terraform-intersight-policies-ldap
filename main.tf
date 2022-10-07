@@ -143,7 +143,7 @@ resource "intersight_iam_ldap_group" "ldap_group" {
 #__________________________________________________________________
 
 resource "intersight_iam_ldap_provider" "ldap_providers" {
-  for_each = { for v in var.ldap_servers : v.server => v }
+  for_each = { for v in var.ldap_providers : v.server => v }
   depends_on = [
     intersight_iam_ldap_policy.ldap
   ]
