@@ -46,6 +46,13 @@ func TestFull(t *testing.T) {
 	assert.NotEmpty(t, ldap_policy_moid, "TF policy moid output should not be empty")
 	assert.NotEmpty(t, ldap_provider_moid, "TF provider moid output should not be empty")
 
+	vars2 := map[string]interface{}{
+		"intersight_keyid":         os.Getenv("IS_KEYID"),
+		"intersight_secretkeyfile": os.Getenv("IS_KEYFILE"),
+		"name":                     instanceName,
+		"ldap_policy":              ldap_policy_moid,
+		"ldap_provider":            ldap_provider_moid,
+	}
 	//========================================================================
 	// Make Intersight API call(s) to validate module worked
 	//========================================================================
@@ -97,7 +104,7 @@ func TestFull(t *testing.T) {
 	// The AssertMOComply function only checks that what is expected is in the result. Extra fields in the
 	// result are ignored. This means we don't have to worry about things that aren't known in advance (e.g.
 	// Moids, timestamps, etc)
-	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/iam/LdapPolicies/%s", ldap_policy_moid), expectedJSONTemplate, vars)
+	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/iam/LdapPolicies/%s", ldap_policy_moid), expectedJSONTemplate, vars2)
 
 	// Setup the expected values of the returned MO.
 	// This is a Go template for the JSON object, so template variables can be used
@@ -117,5 +124,5 @@ func TestFull(t *testing.T) {
 	// The AssertMOComply function only checks that what is expected is in the result. Extra fields in the
 	// result are ignored. This means we don't have to worry about things that aren't known in advance (e.g.
 	// Moids, timestamps, etc)
-	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/iam/LdapGroups/%s", ldap_group_moid), expectedGroupTemplate, vars)
+	iassert.AssertMOComply(t, fmt.Sprintf("/api/v1/iam/LdapGroups/%s", ldap_group_moid), expectedGroupTemplate, vars2)
 }
