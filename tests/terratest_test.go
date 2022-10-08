@@ -23,9 +23,9 @@ func TestFull(t *testing.T) {
 
 	// Input variables for the TF module
 	vars := map[string]interface{}{
-		"intersight_keyid":         os.Getenv("IS_KEYID"),
-		"intersight_secretkeyfile": os.Getenv("IS_KEYFILE"),
-		"name":                     instanceName,
+		"apikey":        os.Getenv("IS_KEYID"),
+		"secretkeyfile": os.Getenv("IS_KEYFILE"),
+		"name":          instanceName,
 	}
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
